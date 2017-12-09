@@ -56,6 +56,7 @@ module.exports = function(RED) {
 						protocol: 'mqtts'
 					});
 				}
+				self.log("successfully created");
 				if (self.device) {
 					self.device.on('connect', function() {
 						callback('connected');
@@ -75,8 +76,9 @@ module.exports = function(RED) {
 				callback('ready');
 			}
 		};
+    self.log("callback created");
 
-		self.on('close', function() {
+    self.on('close', function() {
 			self.log("closed " + self.clientId + " ok");
 			if (self.device) {
 				if (n.mode == "shadow") {
@@ -162,35 +164,51 @@ module.exports = function(RED) {
 		self.on("input", function(msg) {
 			if (self.awsIot) {
 				self.awsIot.connect(msg.clientId, msg.reconnect, function(event, error) {
-					if ((event == "ready" || event == "created")) {
+          self.log("connected");
+
+          if ((event == "ready" || event == "created")) {
 						if (!Buffer.isBuffer(msg.payload)) {
 							if ( typeof msg.payload === "object") {
 								msg.payload = JSON.stringify(msg.payload);
-							} else if ( typeof msg.payload !== "string") {
+                self.log("payload converted for object");
+
+              } else if ( typeof msg.payload !== "string") {
 								msg.payload = msg.payload.toString();
-							}
+                self.log("payload converted for string");
+
+              }
 							msg.payload = new Buffer(msg.payload, "utf-8");
-						}
+              self.log("payload codec set");
+
+            }
 						self.status({
 							fill : "blue",
 							shape : "ring",
 							text : "sending..."
 						});
-						console.log("SEND>", msg.topic || n.topic, msg.payload);
-						self.awsIot.device.publish(msg.topic || n.topic, msg.payload, options, function(error) {
+            self.log("sending");
+
+            console.log("SEND>", msg.topic || n.topic, msg.payload);
+            self.log("SEND>" + msg.topic + " " + n.topic + " " +msg.payload);
+
+            self.awsIot.device.publish(msg.topic || n.topic, msg.payload, options, function(error) {
 							if (error) {
 								self.status({
 									fill : "red",
 									shape : "ring",
 									text : error.message
 								});
-							} else {
+                self.log("error>" + error.message);
+
+              } else {
 								self.status({
 									fill : "green",
 									shape : "ring",
 									text : "done"
 								});
-							}
+                self.log("done>");
+
+              }
 						});
 					}
 				});
