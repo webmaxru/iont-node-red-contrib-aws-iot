@@ -56,7 +56,11 @@ Usage with certificates
 	host : <YourAWSIoTCustomEndpoint>
 ```
 
-See more at https://github.com/aws/aws-iot-device-sdk-js/blob/master/README.md#certificate-configuration 
+See more at https://github.com/aws/aws-iot-device-sdk-js/blob/master/README.md#certificate-configuration
 
+### Runtime information
+This node was tested to Node.js v7.4.0 and NPM 5.6.0 on Node-Red v0.18.4
+
+### Credits
 This node is based on <a href="https://github.com/darrenchiu/iont-node-red-contrib-aws-iot" target="_new">iont-node-red-contrib-aws-iot</a> by <a href="https://github.com/darrenchiu">Darren Chiu</a>.
 
