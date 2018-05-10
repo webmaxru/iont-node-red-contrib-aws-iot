@@ -1,7 +1,8 @@
-node-red-contrib-aws-iot-custom-auth
+A Node-Red node to read and write to the Amazon Web Services AWS IoT using the Custom Authorizer.
 ====================
 
-A Node-Red node to read and write to the Amazon Web Services AWS IoT using the Custom Authorizer.
+Support ThingShadow and MQTT protocol with Certificate Store by clientId (thingName) or using Custom Authorizer
+
 
 Install
 -------
