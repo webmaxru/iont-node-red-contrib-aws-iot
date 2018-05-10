@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>node-red-contrib-aws-iot</name>
+	<name>node-red-contrib-aws-iot-custom-auth</name>
 	<comment></comment>
 	<projects>
 	</projects>

@@ -1,18 +1,20 @@
 {
-  "name": "iont-node-red-contrib-aws-iot-hub",
-  "version": "0.1.18",
-  "description": "An aws-iot-hub node for Node-RED",
+  "name": "node-red-contrib-aws-iot-custom-auth",
+  "version": "0.1.0",
+  "description": "An IoT aws-thing with the Custom Authorizer node for Node-RED",
   "dependencies": {
     "aws-iot-device-sdk": "1.0.12"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/darrenchiu/iont-node-red-contrib-aws-iot.git"
+    "url": "https://github.com/webmaxru/node-red-contrib-aws-iot-custom-auth.git"
   },
   "license": "Apache-2.0",
   "keywords": [
     "node-red",
-    "aws-iot"
+    "aws-iot",
+    "aws-thing",
+    "custom-authorizer"
   ],
   "node-red": {
     "nodes": {
@@ -20,8 +22,8 @@
     }
   },
   "author": {
-    "name": "Darren Chiu",
-    "email": "chiusw2003@gmail.com"
+    "name": "Maxim Salnikov",
+    "email": "salnikov@gmail.com"
   },
   "scripts": {
     "prepare": "mversion patch -mn 'Patch new version and publish'",

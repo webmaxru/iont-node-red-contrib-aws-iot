@@ -24,6 +24,7 @@ limitations under the License.
 	<select type="text" id="node-config-input-mode">
 	<option value="broker">MQTT Broker</option>
 	<option value="shadow">Thing Shadow</option>
+	<option value="wss-custom-auth">Custom Authorizer</option>
 	</select>
 	</div>
 	<div class="form-row">
@@ -34,9 +35,35 @@ limitations under the License.
 	<label for="node-config-input-endpoint"><i class="fa fa-tag"></i> Endpoint</label>
 		<input type="text" id="node-config-input-endpoint" placeholder="AWS IoT Endpoint">
 	</div>
+
+	<div class="form-row">
+		For MQTT Broker and Thing Shadow types:
+	</div>
+
 	<div class="form-row">
 	<label for="node-config-input-awscerts"><i class="fa fa-tag"></i> AWS Certs</label>
 	<input type="text" id="node-config-input-awscerts"></input>
+	</div>
+
+	<div class="form-row">
+		For Custom Authorizer type:
+	</div>
+
+	<div class="form-row">
+		<label for="node-config-input-customAuthName" placeholder="IoTAuthorizer"><i class="fa fa-tag"></i> Custom Authorizer Name</label>
+		<input type="text" id="node-config-input-customAuthName"></input>
+	</div>
+	<div class="form-row">
+		<label for="node-config-input-tokenKey"><i class="fa fa-tag"></i> Token Key</label>
+		<input type="text" id="node-config-input-tokenKey"></input>
+	</div>
+	<div class="form-row">
+		<label for="node-config-input-tokenValue"><i class="fa fa-tag"></i> Token Value</label>
+		<textarea style="width: 70%" id="node-config-input-tokenValue"></textarea>
+	</div>
+	<div class="form-row">
+		<label for="node-config-input-customAuthSignature"><i class="fa fa-tag"></i> Custom Authorizer Signature</label>
+		<textarea style="width: 70%" id="node-config-input-customAuthSignature"></textarea>
 	</div>
 </script>
 
@@ -63,7 +90,23 @@ limitations under the License.
 			},
 			awscerts : {
 				value : "/root/.agent/certs",
-				required : true
+				required : false
+			},
+			customAuthName : {
+				value : "IoTAuthorizer",
+				required : false
+			},
+			tokenKey : {
+				value : "X-Token-Header",
+				required : false
+			},
+			tokenValue : {
+				value : "",
+				required : false
+			},
+			customAuthSignature : {
+				value : "",
+				required : false
 			}
 		},
 		label : function() {

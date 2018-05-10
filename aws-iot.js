@@ -46,6 +46,18 @@ module.exports = function(RED) {
 						host : self.endpoint,
 						protocol: 'mqtts'
 					});
+				} else if(n.mode == "wss-custom-auth") {
+					let deviceConfig = {
+						clientId : clientId,
+						host : self.endpoint,
+						protocol: 'wss-custom-auth',
+						customAuthHeaders: {
+							'X-Amz-CustomAuthorizer-Name': n.customAuthName,
+							'X-Amz-CustomAuthorizer-Signature': n.customAuthSignature,
+						}
+					}
+					deviceConfig.customAuthHeaders[n.tokenKey] = n.tokenValue
+					self.device = require('aws-iot-device-sdk').device(deviceConfig);
 				} else {
 					self.device = require('aws-iot-device-sdk').device({
 						keyPath : keyPath,
