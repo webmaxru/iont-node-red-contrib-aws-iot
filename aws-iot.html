@@ -142,7 +142,7 @@ limitations under the License.
 <script type="text/javascript">
 	RED.nodes.registerType('aws-mqtt out', {
 		category : 'output',
-		color : "#e97b00",
+		color : "#CCB2FF",
 		defaults : {
 			device : {
 				type : "aws-iot-device",
@@ -158,7 +158,7 @@ limitations under the License.
 		},
 		inputs : 1,
 		outputs : 0,
-		icon : "bridge.png",
+		icon : "aws-iot.png",
 		align : "right",
 		label : function() {
 			var dbNode = RED.nodes.node(this.device);
@@ -190,7 +190,7 @@ limitations under the License.
 <script type="text/javascript">
 	RED.nodes.registerType('aws-mqtt in', {
 		category : 'input',
-		color : "#e97b00",
+		color : "#CCB2FF",
 		defaults : {
 			device : {
 				type : "aws-iot-device",
@@ -202,7 +202,7 @@ limitations under the License.
 		},
 		inputs : 0,
 		outputs : 1,
-		icon : "bridge.png",
+		icon : "aws-iot.png",
 		align : "left",
 		label : function() {
 			var dbNode = RED.nodes.node(this.device);
@@ -253,8 +253,8 @@ limitations under the License.
 
 <script type="text/javascript">
 	RED.nodes.registerType('aws-thing', {
-		category : 'function',
-		color : "#e97b00",
+		category : 'AWS IoT',
+		color : "#CCB2FF",
 		defaults : {
 			device : {
 				type : "aws-iot-device",
@@ -267,8 +267,8 @@ limitations under the License.
 		},
 		inputs : 1,
 		outputs : 1,
-		icon : "light.png",
-		align : "right",
+		icon : "aws-iot.png",
+		align : "left",
 		label : function() {
 			var dbNode = RED.nodes.node(this.device);
 			return "[" + this.method + "] /" + ( dbNode ? dbNode.label() : "aws-thing");
